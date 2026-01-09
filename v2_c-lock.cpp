@@ -1,5 +1,5 @@
 #include <iostream>
-#include <iomanip> //for padding with zeros (ex. "04:30" vs "4:30")
+#include <iomanip> //for padding with zeros (ex. with: "04:30" vs without: "4:30")
 #include <thread>  //for waiting one second between updates via sleep_for
 #include <chrono>  //for getting time from computer
 #include <ctime>   //same^^
@@ -15,7 +15,7 @@ struct ProgramFlags {
     bool minimal = false;
 };
 
-ProgramFlags parseFlags(int argc, char* argv[]) {
+ProgramFlags ParseFlags(int argc, char* argv[]) {
     ProgramFlags flags;
 
     for (int i = 1; i < argc; i++) {
@@ -50,7 +50,7 @@ ProgramFlags parseFlags(int argc, char* argv[]) {
 }
 
 
-void printMenu() {
+void PrintMenu() {
     cout << "1. Show digital clock" << endl;
     cout << "-" << endl;
     cout << "-" << endl;
@@ -60,16 +60,16 @@ void printMenu() {
 }
 
 
-int menu(){
+int Menu(){
     int choice;
     cout << "[c-lock menu]" << endl;
     while (true) {
-        printMenu();
+        PrintMenu();
         cin >> choice;
 
         switch (choice) {
             case 1:
-                showDigital();
+                ShowDigital();
                 break;
             case 2:
                 break;
@@ -94,7 +94,7 @@ int menu(){
 }
 
 
-void showDigital(){
+void ShowDigital(){
     while (true) {
         //gets current time
         auto now = chrono::system_clock::now();
@@ -123,12 +123,12 @@ void showDigital(){
 }
 
 
-int handleFlags(ProgramFlags flags){
+int HandleFlags(ProgramFlags flags){
     cout << "Flags: " << endl;
 
     if (flags.menu) {
         cout << "menu" << endl;
-        menu();
+        Menu();
     }
     if (flags.help) {
         cout << "help" << endl;
@@ -154,13 +154,13 @@ int handleFlags(ProgramFlags flags){
 
 
 int main(int argc, char* argv[]) {
-    auto flags = parseFlags(argc, argv);
+    auto flags = ParseFlags(argc, argv);
 
     cout << argc << endl;
     if (argc == 1) {
-        showDigital();
+        ShowDigital();
     } else {
         cout << "more than 1 args" << endl;
-        handleFlags(flags);
+        HandleFlags(flags);
     }
 }

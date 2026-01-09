@@ -29,6 +29,6 @@ int main() {
              << setw(2) << m << ":"
              << setw(2) << s << flush; //flush prints time immediately
 
-        this_thread::sleep_for(chrono::seconds(1));
+        //this_thread::sleep_for(chrono::seconds(1));
     }
 }
