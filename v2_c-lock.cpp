@@ -15,6 +15,16 @@ struct ProgramFlags {
     bool minimal = false;
 };
 
+ProgramFlags ParseFlags(int argc, char* argv[]);
+void PrintMenu();
+int Menu();
+int HandleFlags(ProgramFlags flags);
+void ShowDigital();
+void ShowASCII();
+void ShowAnalog();
+void Timer();
+void Alarm();
+
 ProgramFlags ParseFlags(int argc, char* argv[]) {
     ProgramFlags flags;
 
@@ -51,12 +61,12 @@ ProgramFlags ParseFlags(int argc, char* argv[]) {
 
 
 void PrintMenu() {
-    cout << "1. Show digital clock" << endl;
-    cout << "-" << endl;
-    cout << "-" << endl;
-    cout << "-" << endl;
-    cout << "-" << endl;
-    cout << "-" << endl;
+    cout << "1. Display digital clock" << endl;
+    cout << "2. Show ASCII digital clock" << endl;
+    cout << "3. Display analog clock" << endl;
+    cout << "4. Timer" << endl;
+    cout << "5. Alarm" << endl;
+    cout << "6. Exit" << endl;
 }
 
 
@@ -72,12 +82,16 @@ int Menu(){
                 ShowDigital();
                 break;
             case 2:
+                ShowASCII();
                 break;
             case 3:
+                ShowAnalog();
                 break;
             case 4:
+                Timer();
                 break;
             case 5:
+                Alarm();
                 break;
             case 6:
                 break;
